@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Princess ❤️</title>
+    <!-- Premium Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Montserrat:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+           1. CORE ARCHITECTURE & AURORA THEME ENGINE
+           ========================================================================== */
+        :root {
+            --rose-pink: #ff4f9a;
+            --neon-pink: #ff2a74;
+            --lavender: #e6b2ff;
+            --purple-deep: #12072b;
+            --midnight: #050211;
+            --gold: #ffd700;
+            --glass-bg: rgba(15, 8, 28, 0.6);
+            --glass-border: rgba(255, 79, 154, 0.25);
+            --font-luxury: 'Cinzel', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --font-cursive: 'Sacramento', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background-color: var(--midnight);
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--midnight); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--neon-pink), var(--purple-deep)); border-radius: 4px; }
+
+        /* Cinematic Background Mesh & Aurora Orbs */
+        .universe-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -3;
+            background: radial-gradient(circle at 20% 30%, var(--purple-deep) 0%, var(--midnight) 70%);
+            overflow: hidden;
+        }
+
+        .aurora-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.45;
+            mix-blend-mode: screen;
+            animation: floatOrb 25s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, var(--rose-pink), transparent 60%); top: -10%; left: -10%; }
+        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #7b2cbf, transparent 60%); bottom: -10%; right: 10%; animation-delay: -5s; }
+        .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #00f5d4, transparent 60%); top: 40%; left: 50%; animation-delay: -10s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate3d(80px, 60px, 0) scale(1.2) rotate(180deg); }
+            100% { transform: translate3d(-40px, -80px, 0) scale(0.9) rotate(360deg); }
+        }
+
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        #customCursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--rose-pink);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate3d(-50%, -50%, 0);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            mix-blend-mode: difference;
+        }
+        #cursorDot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--neon-pink);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate3d(-50%, -50%, 0);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ==========================================================================
+           2. PREMIUM PRELOADER WIDGET
+           ========================================================================== */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--midnight);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1), visibility 1s;
+        }
+        .loader-heart {
+            font-size: 4rem;
+            color: var(--neon-pink);
+            animation: pulse 1.2s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-shadow: 0 0 40px var(--neon-pink);
+            margin-bottom: 30px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.25); }
+            60% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        .loader-text {
+            font-family: var(--font-luxury);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        .progress-bar-container {
+            width: 280px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-line {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--rose-pink), var(--gold));
+            box-shadow: 0 0 15px var(--rose-pink);
+            transition: width 0.4s ease;
+        }
+
+        /* ==========================================================================
+           3. APPLE-STYLE HERO LANDING SECTOR
+           ========================================================================== */
+        .section-wrapper {
+            min-height: 100vh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            z-index: 2;
+        }
+        
+        .hero-container {
+            text-align: center;
+            max-width: 1200px;
+            z-index: 5;
+        }
+        .giant-ambient-text {
+            font-family: var(--font-luxury);
+            font-size: 15vw;
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            opacity: 0.03;
+            background: linear-gradient(180deg, #fff, var(--rose-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 100%;
+            pointer-events: none;
+        }
+        .hero-crown {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            animation: floatIcon 4s infinite ease-in-out;
+            text-shadow: 0 0 20px rgba(255,215,0,0.4);
+        }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        .hero-main-title {
+            font-family: var(--font-luxury);
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 8px;
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, var(--lavender), var(--rose-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: -10px;
+        }
+        .hero-name {
+            font-family: var(--font-cursive);
+            font-size: 7.5rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 40px rgba(255, 42, 116, 0.4);
+            margin-bottom: 25px;
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            line-height: 1.8;
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .premium-btn {
+            position: relative;
+            padding: 16px 40px;
+            border-radius: 40px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            background: transparent;
+            border: none;
+            z-index: 1;
+        }
+        .btn-primary {
+            color: #ffffff;
+            background: linear-gradient(45deg, var(--neon-pink), var(--rose-pink));
+            box-shadow: 0 10px 30px rgba(255, 42, 116, 0.3);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 15px 40px var(--neon-pink);
+            transform: translate3d(0, -4px, 0);
+        }
+        .btn-secondary {
+            color: #ffffff;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+            transform: translate3d(0, -4px, 0);
+        }
+
+        /* Floating Audio Controller */
+        .audio-widget {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .audio-widget:hover {
+            border-color: var(--rose-pink);
+            transform: scale(1.05);
+        }
+        .visualizer {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 18px;
+        }
+        .visualizer-bar {
+            width: 3px;
+            height: 100%;
+            background-color: var(--rose-pink);
+            border-radius: 2px;
+            transform-origin: bottom;
+            animation: bounceBar 1s ease-in-out infinite alternate;
+            animation-play-state: paused;
+        }
+        .visualizer.playing .visualizer-bar { animation-play-state: running; }
+        .visualizer-bar:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+        .visualizer-bar:nth-child(3) { animation-delay: 0.4s; height: 80%; }
+        .visualizer-bar:nth-child(4) { animation-delay: 0.1s; height: 40%; }
+        @keyframes bounceBar { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1.1); } }
+
+        /* ==========================================================================
+           4. CHRONO CHIPS (LIVE TICKING ENGINE)
+           ========================================================================== */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(30px);
+            border-radius: 35px;
+            padding: 50px;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+            transform: translate3d(0, 40px, 0);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .glass-card.visible {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+        .section-title {
+            font-family: var(--font-luxury);
+            font-size: 2.2rem;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #fff, var(--lavender));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 20px;
+        }
+        .counter-node {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .counter-node:hover { border-color: var(--rose-pink); }
+        .counter-val {
+            font-family: var(--font-luxury);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--rose-pink);
+            text-shadow: 0 0 15px rgba(255,79,154,0.3);
+        }
+        .counter-lbl {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: 5px;
+        }
+
+        /* ==========================================================================
+           5. INTERACTIVE COUPONS & WISH WALL
+           ========================================================================== */
+        .coupon-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1100px;
+        }
+        .coupon-ticket {
+            background: linear-gradient(135deg, rgba(30,15,50,0.8), rgba(15,8,25,0.9));
+            border: 1px dashed var(--rose-pink);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .coupon-ticket:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 79, 154, 0.2);
+        }
+        .coupon-notch {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--midnight);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .notch-left { left: -10px; border-right: 1px dashed var(--rose-pink); }
+        .notch-right { right: -10px; border-left: 1px dashed var(--rose-pink); }
+        .coupon-title { font-family: var(--font-luxury); font-size: 1.3rem; color: var(--gold); margin-bottom: 10px; }
+        .coupon-desc { font-size: 0.85rem; opacity: 0.7; line-height: 1.5; }
+        .coupon-status {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-pink);
+            font-weight: 700;
+        }
+
+        .wish-wall-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1100px;
+        }
+        .sticky-note {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 5px 25px 5px 5px;
+            box-shadow: 5px 15px 25px rgba(0,0,0,0.3);
+            transform: rotate(-1deg);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .sticky-note:nth-child(even) { transform: rotate(2deg); }
+        .sticky-note:hover { transform: scale(1.05) rotate(0deg); border-color: var(--lavender); }
+        .sticky-note p { font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.6; opacity: 0.85; }
+        .sticky-note .author { font-family: var(--font-cursive); font-size: 1.8rem; color: var(--rose-pink); margin-top: 15px; text-align: right; }
+
+        /* ==========================================================================
+           6. OPTIMIZED HIGH-PERFORMANCE 3D FLIP-BOOK & ENVELOPE
+           ========================================================================== */
+        .envelope-container {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background: linear-gradient(135deg, #d1235a, #850e35);
+            border-radius: 10px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translate3d(0,0,0);
+        }
+        .envelope-container:hover { transform: scale(1.05) rotate(1deg); }
+        .wax-seal {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ffd700, #b39200);
+            border-radius: 50%;
+            position: absolute;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px dashed #850e35;
+        }
+        .envelope-flap {
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 120px solid rgba(255,255,255,0.08);
+            z-index: 5;
+        }
+
+        /* GPU Enhanced Viewport Container */
+        .book-viewport {
+            position: fixed;
+            top: 50%; left: 50%;
+            width: 760px;
+            height: 520px;
+            perspective: 1800px;
+            z-index: 2000;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate3d(-50%, -50%, 0) scale(0.85);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease, visibility 0.4s;
+        }
+        .book-viewport.opened { 
+            pointer-events: auto;
+            opacity: 1;
+            visibility: visible;
+            transform: translate3d(-50%, -50%, 0) scale(1); 
+        }
+
+        .real-3d-book {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translate3d(0,0,0);
+        }
+
+        /* Base Page Configurations */
+        .book-page {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            background: linear-gradient(145deg, #fffcf2, #f4edd9);
+            box-shadow: inset 3px 0 20px rgba(0,0,0,0.08), 5px 10px 25px rgba(0,0,0,0.15);
+            padding: 25px;
+            color: #2b181b;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .page-left-fixed {
+            left: 0;
+            border-radius: 12px 0 0 12px;
+            border-right: 2px solid rgba(0, 0, 0, 0.15);
+            z-index: 1;
+        }
+        .page-right-fixed {
+            right: 0;
+            border-radius: 0 12px 12px 0;
+            border-left: 2px solid rgba(0, 0, 0, 0.15);
+            z-index: 1;
+        }
+
+        /* LAGG-FREE GPU DRIVEN FLIPPING MECHANISM */
+        .flipping-wrapper {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            right: 0;
+            top: 0;
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+            z-index: 5;
+            cursor: pointer;
+            transform: translate3d(0, 0, 0) rotateY(0deg);
+        }
+        .flipping-wrapper.flipped {
+            transform: translate3d(0, 0, 0) rotateY(-180deg);
+        }
+
+        /* Layer Optimization for Face Elements */
+        .flip-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(145deg, #fffcf2, #f4edd9);
+            transform: translate3d(0, 0, 0);
+        }
+        .face-front {
+            z-index: 2;
+            border-radius: 0 12px 12px 0;
+            box-shadow: inset 10px 0 20px rgba(0,0,0,0.05);
+        }
+        .face-back {
+            transform: translate3d(0, 0, 0) rotateY(180deg);
+            border-radius: 12px 0 0 12px;
+            box-shadow: inset -10px 0 20px rgba(0,0,0,0.05);
+            border-right: 2px solid rgba(0,0,0,0.1);
+        }
+
+        /* Spine and Layout Styling */
+        .book-spine {
+            position: absolute;
+            left: 50%; top: 0;
+            width: 16px; height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.25), rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.05) 70%, rgba(0,0,0,0.25));
+            transform: translate3d(-50%, 0, 0);
+            z-index: 10;
+            pointer-events: none;
+        }
+        .book-title-lbl {
+            font-family: var(--font-luxury);
+            font-size: 1rem;
+            color: #850e35;
+            font-weight: 700;
+            border-bottom: 1px dashed rgba(133,14,53,0.15);
+            padding-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .book-txt-content {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: #3d2428;
+            font-weight: 500;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+        
+        /* Book Image System Wrapper */
+        .book-img-slot {
+            width: 100%;
+            height: 140px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border: 1px solid rgba(133,14,53,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .book-img-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-footer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px dashed rgba(133,14,53,0.15);
+            padding-top: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #850e35;
+        }
+        .flip-arrow-hint {
+            animation: bounceRight 0.8s infinite alternate ease-in-out;
+        }
+        @keyframes bounceRight { to { transform: translate3d(4px, 0, 0); } }
+
+        /* Blur Overlay background */
+        #letterBlurOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(5, 2, 17, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1999;
+            opacity: 0; visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        #letterBlurOverlay.active { opacity: 1; visibility: visible; }
+
+        /* ==========================================================================
+           8. CINEMATIC SURPRISE INTERACTION SECTOR
+           ========================================================================== */
+        .giant-trigger-btn {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--neon-pink), #ff758c);
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 50px rgba(255, 42, 116, 0.6);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .giant-trigger-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 80px var(--neon-pink);
+        }
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--neon-pink);
+            border-radius: 50%;
+            top: 0; left: 0;
+            animation: sonarRing 2s infinite linear;
+            pointer-events: none;
+        }
+        @keyframes sonarRing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        #celebrationOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(3, 1, 8, 0.95);
+            z-index: 5000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease;
+        }
+        #celebrationOverlay.active { opacity: 1; visibility: visible; }
+        .overlay-card { text-align: center; }
+        .overlay-title { font-family: var(--font-luxury); font-size: 4rem; color: var(--gold); margin-bottom: 20px; text-shadow: 0 0 30px rgba(255,215,0,0.5); }
+
+        footer {
+            border-top: 1px solid var(--glass-border);
+            background: rgba(5, 2, 17, 0.8);
+            padding: 40px 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 5;
+        }
+        footer p { font-size: 0.85rem; opacity: 0.6; letter-spacing: 2px; }
+        footer .footer-heart { color: var(--neon-pink); margin: 10px 0; animation: beat 1s infinite alternate; }
+        @keyframes beat { to { transform: scale(1.2); } }
+
+        /* Mobile Optimization for Book Matrix */
+        @media (max-width: 768px) {
+            .hero-main-title { font-size: 2.8rem; }
+            .hero-name { font-size: 4.5rem; }
+            .section-title { font-size: 1.6rem; }
+            .glass-card { padding: 30px 20px; }
+            .book-viewport { width: 95%; height: 460px; }
+            .book-page, .flip-face { padding: 15px; }
+            .book-txt-content { font-size: 0.78rem; line-height: 1.4; }
+            .book-img-slot { height: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Master Layer Components -->
+    <div class="universe-bg">
+        <div class="aurora-orb orb-1"></div>
+        <div class="aurora-orb orb-2"></div>
+        <div class="aurora-orb orb-3"></div>
+    </div>
+    <canvas id="matrixCanvas"></canvas>
+    <div id="customCursor"></div>
+    <div id="cursorDot"></div>
+
+    <!-- Preloader Engine -->
+    <div id="preloader">
+        <div class="loader-heart"><i class="fas fa-heart"></i></div>
+        <div class="loader-text">Assembling Magic for Princess Mim...</div>
+        <div class="progress-bar-container">
+            <div class="progress-line" id="loadLine"></div>
+        </div>
+    </div>
+
+    <!-- Global Floating Background Music Handler (Premium Birthday Track) -->
+    <audio id="romanticTrack" src="https://assets.mixkit.co/active_storage/sfx/123/123.wav" loop></audio>
+    <div class="audio-widget" onclick="controlAudio()">
+        <div class="visualizer" id="visualizerBox">
+            <div class="visualizer-bar"></div>
+            <div class="visualizer-bar"></div>
+            <div class="visualizer-bar"></div>
+            <div class="visualizer-bar"></div>
+        </div>
+        <span style="font-size: 0.75rem; letter-spacing: 1px; font-weight: 600;" id="audioStateTxt">PLAY BDAY MUSIC 🎵</span>
+    </div>
+
+    <!-- HERO SECTOR -->
+    <section class="section-wrapper">
+        <div class="giant-ambient-text">PRINCESS</div>
+        <div class="hero-container">
+            <div class="hero-crown"><i class="fas fa-crown"></i></div>
+            <h1 class="hero-main-title">HAPPY BIRTHDAY</h1>
+            <h2 class="hero-name">Mim ❤️</h2>
+            <p class="hero-subtitle">
+                You are my favorite place, my happiest memory, my safest home, and my forever. In the universe of my life, you shine brighter than all galaxies combined.
+            </p>
+            <div class="btn-group">
+                <button class="premium-btn btn-primary" onclick="scrollToSector('chrono')">Open My Heart</button>
+                <button class="premium-btn btn-secondary" onclick="scrollToSector('letter-zone')">Read My Letter ✉️</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHRONO COUNTER SECTOR (Count Up From 2019) -->
+    <section class="section-wrapper" id="chrono">
+        <div class="glass-card scroll-reveal">
+            <h3 class="section-title">TIME SPENT IN UNCONDITIONAL LOVE (SINCE 2019)</h3>
+            <div class="counter-grid">
+                <div class="counter-node"><div class="counter-val" id="c-days">00</div><div class="counter-lbl">Days</div></div>
+                <div class="counter-node"><div class="counter-val" id="c-hours">00</div><div class="counter-lbl">Hours</div></div>
+                <div class="counter-node"><div class="counter-val" id="c-mins">00</div><div class="counter-lbl">Mins</div></div>
+                <div class="counter-node"><div class="counter-val" id="c-secs">00</div><div class="counter-lbl">Secs</div></div>
+            </div>
+            <p style="text-align:center; margin-top:30px; font-style:italic; opacity:0.7; font-size:0.95rem;">
+                "২০১৯ সাল থেকে তোমার প্রতিটি অনুভূতি আমার হৃদয়ে গেঁথে আছে, মিম। ভালোবাসার এই পথচলা চিরকাল অম্লান থাকবে।"
+            </p>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE COUPONS SECTOR -->
+    <section class="section-wrapper" id="coupons">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <h3 class="section-title" style="margin-bottom: 50px;">YOUR ROYAL LOVE COUPONS</h3>
+            <div class="coupon-box">
+                <div class="coupon-ticket" onclick="claimCoupon(this)">
+                    <div class="coupon-notch notch-left"></div>
+                    <div class="coupon-notch notch-right"></div>
+                    <div class="coupon-title">👑 UNLIMITED HUGS</div>
+                    <div class="coupon-desc">Valid anywhere, anytime. Redeemable instantly whenever you feel down or want warmth.</div>
+                    <div class="coupon-status">Tap to Claim</div>
+                </div>
+                <div class="coupon-ticket" onclick="claimCoupon(this)">
+                    <div class="coupon-notch notch-left"></div>
+                    <div class="coupon-notch notch-right"></div>
+                    <div class="coupon-title">✨ ONE SURPRISE DATE</div>
+                    <div class="coupon-desc">A premium candlelit dinner arranged entirely by me at your favorite luxurious spot.</div>
+                    <div class="coupon-status">Tap to Claim</div>
+                </div>
+                <div class="coupon-ticket" onclick="claimCoupon(this)">
+                    <div class="coupon-notch notch-left"></div>
+                    <div class="coupon-notch notch-right"></div>
+                    <div class="coupon-title">🍿 LATE NIGHT MOVIE MARATHON</div>
+                    <div class="coupon-desc">Your choice of films, endless snacks, and my absolute undivided attention all night long.</div>
+                    <div class="coupon-status">Tap to Claim</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REAL 3D BOOK-STYLE LOVE LETTER SECTOR -->
+    <section class="section-wrapper" id="letter-zone">
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+            <h3 class="section-title" style="margin-bottom: 40px;">A SECRET LETTER FOR THE QUEEN</h3>
+            
+            <!-- Envelope Trigger Container -->
+            <div class="envelope-container" onclick="openSecretLetterBook()">
+                <div class="envelope-flap"></div>
+                <div class="wax-seal">❤️</div>
+                <span style="font-size: 0.85rem; font-weight:700; letter-spacing:2px; margin-top:80px; opacity:0.8;">TAP TO UNSEAL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overlay Layer Components -->
+    <div id="letterBlurOverlay" onclick="closeSecretLetterBook()"></div>
+    
+    <!-- Optimized 3D Book System -->
+    <div class="book-viewport" id="secretLetterBook">
+        <div class="real-3d-book">
+            <div class="book-spine"></div>
+            
+            <!-- LEFT FIXED PAGE: PAGE 1 -->
+            <div class="book-page page-left-fixed">
+                <div class="book-title-lbl">To My Sweetheart, Mim ✨</div>
+                <div class="book-img-slot">
+                    <img src="image/main.png" alt="Memory 1">
+                </div>
+                <div class="book-txt-content">
+                    মিম, আজকের এই বিশেষ দিনে আমি আমার হৃদয়ের সবচেয়ে গভীর কোণ থেকে তোমাকে বলতে চাই—তুমি শুধু আমার ভালোবাসাই নও, তুমি আমার বেঁচে থাকার সুন্দরতম অজুহাত। ২০১৯ সাল থেকে শুরু হওয়া প্রতিটি মুহূর্ত আজ স্মৃতি হয়ে আমার মনে স্পন্দন জাগায়।
+                </div>
+                <div class="book-footer-info">
+                    <span>Page 1/4</span>
+                    <span style="opacity: 0.5;">Our Journey</span>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE FLIPPING CORE LEAF (Handles Page 2 & Page 3) -->
+            <div class="flipping-wrapper" id="movingLeaf" onclick="executePageFlip()">
+                <!-- Front Side: Page 2 -->
+                <div class="flip-face face-front">
+                    <div class="book-title-lbl">Memories Intertwined 💖</div>
+                    <div class="book-img-slot">
+                        <img src="image/img2.png" alt="Memory 2">
+                    </div>
+                    <div class="book-txt-content">
+                        আমাদের একসাথে কাটানো কিছু মুহূর্ত, তোমার ওই অবুঝ অভিমান, আবার পরক্ষণেই এক চিলতে মিষ্টি হাসি দিয়ে সব রাগ ভুলিয়ে দেওয়া—এই সবকিছুই আমার জীবনের শ্রেষ্ঠ সম্পদ। পৃথিবীর সব সুখ একপাশে আর তোমার ওই পবিত্র ভালোবাসা একপাশে।
+                    </div>
+                    <div class="book-footer-info">
+                        <span>Page 2/4</span>
+                        <span class="flip-arrow-hint">Tap to Flip <i class="fas fa-chevron-right"></i></span>
+                    </div>
+                </div>
+                <!-- Back Side: Page 3 -->
+                <div class="flip-face face-back">
+                    <div class="book-title-lbl">My Vows to You ♾️</div>
+                    <div class="book-img-slot">
+                        <img src="image/img3.png" alt="Memory 3">
+                    </div>
+                    <div class="book-txt-content">
+                        আজকের দিনে তোমাকে কথা দিচ্ছি মিম, জীবনের প্রতিটি ঝড়-ঝাপটায় আমি তোমার ছায়া হয়ে পাশে থাকবো। রোদ হোক কিংবা বৃষ্টি, তোমার এই হাতটা আমি কখনো ছাড়বো না। আমার অস্তিত্বের প্রতিটি কণা শুধু তোমাকেই ভালোবাসে, আজীবন ভালোবেসে যাবে।
+                    </div>
+                    <div class="book-footer-info">
+                        <span class="flip-arrow-hint"><i class="fas fa-chevron-left"></i> Tap to Flip</span>
+                        <span>Page 3/4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT FIXED PAGE: PAGE 4 -->
+            <div class="book-page page-right-fixed" onclick="triggerFlowerRainSequence()">
+                <div class="book-title-lbl">Forever Yours 🌹</div>
+                <div class="book-img-slot">
+                    <img src="image/img4.png" alt="Memory 4">
+                </div>
+                <div class="book-txt-content">
+                    শুভ জন্মদিন আমার রাজকুমারী, আমার ঘরের লক্ষ্মী! উপরওয়ালার কাছে প্রার্থনা করি তোমার চোখে যেন কোনোদিন জল না আসে। তোমার ঠোঁটের কোণে হাসি ফুটিয়ে রাখার দায়িত্বটা সারাজীবন আমার। আই লাভ ইউ সো মাচ, মিম! ❤️
+                </div>
+                <div class="book-footer-info">
+                    <span style="color: #ff2a74;">Click Page for Flower Magic 🌸</span>
+                    <span>Page 4/4</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- WISH WALL SECTOR (Heart touching promises in Bengali) -->
+    <section class="section-wrapper">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <h3 class="section-title" style="margin-bottom: 50px;">PROMISES ETCHED IN TIME</h3>
+            <div class="wish-wall-grid">
+                <div class="sticky-note">
+                    <p>"মিম, তোমার ওই হাতটা যখন আমার হাতের মুঠোয় থাকে, তখন মনে হয় পুরো পৃথিবীটাই আমার দখলে। ভালো থেকো আমার ভালোবাসা।"</p>
+                    <div class="author">- Shanto</div>
+                </div>
+                <div class="sticky-note">
+                    <p>"কখনো যদি মন খারাপ হয়, একটু চোখ বন্ধ করে আমার বুকে হাত রেখো; শুনতে পাবে প্রতিটি হৃদস্পন্দন শুধু তোমার নামই ডাকছে।"</p>
+                    <div class="author">- Shanto</div>
+                </div>
+                <div class="sticky-note">
+                    <p>"২০১৯ এর সেই প্রথম দিন থেকে আজ পর্যন্ত একটা সেকেন্ডের জন্যও তোমার প্রতি আমার টান কমেনি, বরং প্রতিটা দিন তোমাকে নতুন করে ভালোবেসেছি।"</p>
+                    <div class="author">- Shanto</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CINEMATIC SURPRISE INTERACTION SECTOR -->
+    <section class="section-wrapper">
+        <div style="text-align: center;">
+            <h3 class="section-title" style="margin-bottom: 30px;">READY FOR THE GRAND FINALE?</h3>
+            <p style="margin-bottom: 40px; opacity: 0.7; font-size: 0.95rem;">Touch my heart to activate the cinematic aurora celebration cascade.</p>
+            <button class="giant-trigger-btn" onclick="igniteCelebration()">
+                <i class="fas fa-heart"></i>
+                <div class="pulse-ring"></div>
+            </button>
+        </div>
+    </section>
+
+    <!-- Luxury Overlay HUD Container -->
+    <div id="celebrationOverlay" onclick="closeCelebration()">
+        <div class="overlay-card">
+            <h2 class="overlay-title">HAPPY BIRTHDAY MIM!</h2>
+            <p style="font-size: 1.2rem; letter-spacing: 2px; opacity: 0.9; margin-bottom: 30px;">May your empire of happiness grow infinitely ❤️</p>
+            <button class="premium-btn btn-primary">Close Display</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-heart"><i class="fas fa-heart"></i></div>
+        <p>MADE WITH ENDLESS LOVE & CODING PRECISION FOR MIM</p>
+        <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.4;">FOREVER & ALWAYS © 2026</p>
+    </footer>
+
+    <!-- JAVASCRIPT ANIMATION CORE ENGINE -->
+    <script>
+        const cursor = document.getElementById('customCursor');
+        const dot = document.getElementById('cursorDot');
+        
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            cursor.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 250, fill: 'forwards' });
+        });
+
+        window.addEventListener('click', (e) => { createExplosion(e.clientX, e.clientY); });
+
+        /* Flower Particles Fall Engine (White & Yellow Combo) */
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        let elementsArray = [];
+        let forceGopalRain = false;
+
+        function setCanvasDimensions() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', setCanvasDimensions);
+        setCanvasDimensions();
+
+        class ParticleEntity {
+            constructor() { this.reset(); this.y = Math.random() * canvas.height; }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -30;
+                this.size = forceGopalRain ? Math.random() * 12 + 10 : Math.random() * 8 + 6;
+                this.speedY = forceGopalRain ? Math.random() * 4 + 3 : Math.random() * 1.2 + 0.8;
+                this.speedX = Math.random() * 1.5 - 0.75;
+                this.opacity = Math.random() * 0.6 + 0.4;
+                this.flowerSymbol = Math.random() > 0.5 ? '🌼' : '🌸'; 
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 2 - 1;
+            }
+            update() { 
+                this.y += this.speedY; 
+                this.x += this.speedX; 
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height) this.reset(); 
+            }
+            draw() {
+                ctx.save(); 
+                ctx.globalAlpha = this.opacity;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.font = `${this.size * 2 + 10}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.flowerSymbol, 0, 0);
+                ctx.restore();
+            }
+        }
+
+        function populateSpace() { elementsArray = []; for(let i=0; i<50; i++) { elementsArray.push(new ParticleEntity()); } }
+        populateSpace();
+        function runEngineLoop() { ctx.clearRect(0, 0, canvas.width, canvas.height); elementsArray.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(runEngineLoop); }
+        runEngineLoop();
+
+        function createExplosion(x, y) {
+            for(let i=0; i<8; i++) {
+                const burst = document.createElement('div'); 
+                burst.innerHTML = Math.random() > 0.5 ? '🌼' : '🌸'; 
+                burst.style.position = 'fixed'; 
+                burst.style.left = x + 'px'; 
+                burst.style.top = y + 'px'; 
+                burst.style.fontSize = '20px'; 
+                burst.style.pointerEvents = 'none'; 
+                burst.style.zIndex = '9998'; 
+                burst.style.transition = 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)'; 
+                document.body.appendChild(burst);
+                
+                const angle = Math.random() * Math.PI * 2; 
+                const distance = Math.random() * 80 + 40; 
+                const tx = Math.cos(angle) * distance; 
+                const ty = Math.sin(angle) * distance;
+                
+                setTimeout(() => { 
+                    burst.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${Math.random()*360}deg) scale(0)`; 
+                    burst.style.opacity = '0'; 
+                }, 10); 
+                setTimeout(() => burst.remove(), 800);
+            }
+        }
+
+        /* Loading Control */
+        window.addEventListener('DOMContentLoaded', () => {
+            const progressLine = document.getElementById('loadLine'); const preloader = document.getElementById('preloader'); let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) { clearInterval(interval); preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; }
+                else { width += Math.random() * 15; if (width > 100) width = 100; progressLine.style.width = width + '%'; }
+            }, 120);
+        });
+
+        /* Audio Core Logic */
+        const track = document.getElementById('romanticTrack'); const vBox = document.getElementById('visualizerBox'); const aTxt = document.getElementById('audioStateTxt');
+        function controlAudio() {
+            if (track.paused) { track.play().catch(err => console.log("Blocked")); vBox.classList.add('playing'); aTxt.innerText = "PLAYING BDAY TRACK 💖"; }
+            else { track.pause(); vBox.classList.remove('playing'); aTxt.innerText = "MUSIC PAUSED 🎵"; }
+        }
+
+        /* Layout Scroll Spy */
+        const observedCards = document.querySelectorAll('.scroll-reveal');
+        const layoutObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.15 });
+        observedCards.forEach(c => layoutObserver.observe(c));
+        function scrollToSector(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+
+        /* ==========================================================================
+           ⭐ CHRONO LIVE ENGINE - COUNT UP FROM 2019
+           ========================================================================== */
+        const anniversaryTimeline = new Date("2019-01-01T00:00:00");
+        function refreshChronoCounter() {
+            const difference = new Date() - anniversaryTimeline;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24)); 
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); 
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)); 
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            document.getElementById('c-days').innerText = String(days).padStart(2, '0'); 
+            document.getElementById('c-hours').innerText = String(hours).padStart(2, '0'); 
+            document.getElementById('c-mins').innerText = String(minutes).padStart(2, '0'); 
+            document.getElementById('c-secs').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(refreshChronoCounter, 1000); 
+        refreshChronoCounter();
+
+        function claimCoupon(node) {
+            const statusNode = node.querySelector('.coupon-status'); statusNode.innerHTML = "<i class='fas fa-check-circle'></i> RESERVED FOR MIM"; statusNode.style.color = "var(--gold)"; node.style.borderColor = "var(--gold)"; node.style.pointerEvents = "none";
+        }
+
+        /* ==========================================================================
+           ⭐ REALISTIC & ULTRA-SMOOTH 3D FLIP ENGINE
+           ========================================================================== */
+        const movingLeaf = document.getElementById('movingLeaf');
+        const bookView = document.getElementById('secretLetterBook');
+
+        function openSecretLetterBook() {
+            document.getElementById('letterBlurOverlay').classList.add('active');
+            bookView.classList.add('opened');
+            movingLeaf.classList.remove('flipped');
+            if (track.paused) controlAudio(); 
+        }
+
+        function closeSecretLetterBook() {
+            document.getElementById('letterBlurOverlay').classList.remove('active');
+            bookView.classList.remove('opened');
+            forceGopalRain = false;
+            populateSpace();
+        }
+
+        function executePageFlip() {
+            movingLeaf.classList.toggle('flipped');
+        }
+
+        function triggerFlowerRainSequence() {
+            forceGopalRain = true;
+            for(let i=0; i<80; i++) { elementsArray.push(new ParticleEntity()); }
+            setTimeout(() => {
+                closeSecretLetterBook();
+            }, 5000);
+        }
+
+        function igniteCelebration() { document.getElementById('celebrationOverlay').classList.add('active'); if (track.paused) controlAudio(); }
+        function closeCelebration() { document.getElementById('celebrationOverlay').classList.remove('active'); }
+    </script>
+</body>
+</html>
