@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, My Princess ❤️</title>
     <!-- Premium Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Montserrat:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=600;800;900&family=Montserrat:wght=300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -118,14 +118,79 @@
         }
 
         /* ==========================================================================
-           2. PREMIUM PRELOADER WIDGET
+           2. NEW: LAXURY PASSWORD GATE OVERLAY
            ========================================================================== */
+        #passwordGate {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle, var(--purple-deep) 0%, var(--midnight) 100%);
+            z-index: 20000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .pass-card {
+            background: rgba(15, 8, 28, 0.75);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(25px);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        }
+        .pass-card i.fa-lock {
+            font-size: 3rem;
+            color: var(--rose-pink);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px var(--rose-pink);
+        }
+        .pass-card h2 {
+            font-family: var(--font-luxury);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .pass-card p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 25px;
+        }
+        .pass-input {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .pass-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .pass-error-msg {
+            color: #ff4a4a;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: none;
+            font-weight: 600;
+        }
+
+        /* Preloader Engine */
         #preloader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             background: var(--midnight);
             z-index: 10000;
             display: flex;
@@ -195,8 +260,7 @@
             font-size: 15vw;
             font-weight: 900;
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate3d(-50%, -50%, 0);
             opacity: 0.03;
             background: linear-gradient(180deg, #fff, var(--rose-pink));
@@ -458,7 +522,7 @@
         .sticky-note .author { font-family: var(--font-cursive); font-size: 1.8rem; color: var(--rose-pink); margin-top: 15px; text-align: right; }
 
         /* ==========================================================================
-           6. OPTIMIZED HIGH-PERFORMANCE 3D FLIP-BOOK & ENVELOPE
+           6. OPTIMIZED 3D FLIP-BOOK & ENVELOPE
            ========================================================================== */
         .envelope-container {
             position: relative;
@@ -498,7 +562,6 @@
             z-index: 5;
         }
 
-        /* GPU Enhanced Viewport Container */
         .book-viewport {
             position: fixed;
             top: 50%; left: 50%;
@@ -524,10 +587,8 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            transform: translate3d(0,0,0);
         }
 
-        /* Base Page Configurations */
         .book-page {
             position: absolute;
             width: 50%;
@@ -544,26 +605,13 @@
             -webkit-backface-visibility: hidden;
         }
 
-        .page-left-fixed {
-            left: 0;
-            border-radius: 12px 0 0 12px;
-            border-right: 2px solid rgba(0, 0, 0, 0.15);
-            z-index: 1;
-        }
-        .page-right-fixed {
-            right: 0;
-            border-radius: 0 12px 12px 0;
-            border-left: 2px solid rgba(0, 0, 0, 0.15);
-            z-index: 1;
-        }
+        .page-left-fixed { left: 0; border-radius: 12px 0 0 12px; border-right: 2px solid rgba(0, 0, 0, 0.15); z-index: 1; }
+        .page-right-fixed { right: 0; border-radius: 0 12px 12px 0; border-left: 2px solid rgba(0, 0, 0, 0.15); z-index: 1; }
 
-        /* LAGG-FREE GPU DRIVEN FLIPPING MECHANISM */
         .flipping-wrapper {
             position: absolute;
-            width: 50%;
-            height: 100%;
-            right: 0;
-            top: 0;
+            width: 50%; height: 100%;
+            right: 0; top: 0;
             transform-origin: left center;
             transform-style: preserve-3d;
             transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
@@ -572,15 +620,11 @@
             cursor: pointer;
             transform: translate3d(0, 0, 0) rotateY(0deg);
         }
-        .flipping-wrapper.flipped {
-            transform: translate3d(0, 0, 0) rotateY(-180deg);
-        }
+        .flipping-wrapper.flipped { transform: translate3d(0, 0, 0) rotateY(-180deg); }
 
-        /* Layer Optimization for Face Elements */
         .flip-face {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             padding: 25px;
@@ -588,21 +632,10 @@
             flex-direction: column;
             justify-content: space-between;
             background: linear-gradient(145deg, #fffcf2, #f4edd9);
-            transform: translate3d(0, 0, 0);
         }
-        .face-front {
-            z-index: 2;
-            border-radius: 0 12px 12px 0;
-            box-shadow: inset 10px 0 20px rgba(0,0,0,0.05);
-        }
-        .face-back {
-            transform: translate3d(0, 0, 0) rotateY(180deg);
-            border-radius: 12px 0 0 12px;
-            box-shadow: inset -10px 0 20px rgba(0,0,0,0.05);
-            border-right: 2px solid rgba(0,0,0,0.1);
-        }
+        .face-front { z-index: 2; border-radius: 0 12px 12px 0; box-shadow: inset 10px 0 20px rgba(0,0,0,0.05); }
+        .face-back { transform: translate3d(0, 0, 0) rotateY(180deg); border-radius: 12px 0 0 12px; box-shadow: inset -10px 0 20px rgba(0,0,0,0.05); border-right: 2px solid rgba(0,0,0,0.1); }
 
-        /* Spine and Layout Styling */
         .book-spine {
             position: absolute;
             left: 50%; top: 0;
@@ -612,57 +645,15 @@
             z-index: 10;
             pointer-events: none;
         }
-        .book-title-lbl {
-            font-family: var(--font-luxury);
-            font-size: 1rem;
-            color: #850e35;
-            font-weight: 700;
-            border-bottom: 1px dashed rgba(133,14,53,0.15);
-            padding-bottom: 6px;
-            letter-spacing: 1px;
-        }
-        .book-txt-content {
-            font-family: var(--font-sans);
-            font-size: 0.88rem;
-            line-height: 1.6;
-            color: #3d2428;
-            font-weight: 500;
-            margin-top: 10px;
-            flex-grow: 1;
-        }
+        .book-title-lbl { font-family: var(--font-luxury); font-size: 1rem; color: #850e35; font-weight: 700; border-bottom: 1px dashed rgba(133,14,53,0.15); padding-bottom: 6px; letter-spacing: 1px; }
+        .book-txt-content { font-family: var(--font-sans); font-size: 0.88rem; line-height: 1.6; color: #3d2428; font-weight: 500; margin-top: 10px; flex-grow: 1; }
         
-        /* Book Image System Wrapper */
-        .book-img-slot {
-            width: 100%;
-            height: 140px;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 10px;
-            border: 1px solid rgba(133,14,53,0.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .book-img-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .book-footer-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px dashed rgba(133,14,53,0.15);
-            padding-top: 10px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: #850e35;
-        }
-        .flip-arrow-hint {
-            animation: bounceRight 0.8s infinite alternate ease-in-out;
-        }
+        .book-img-slot { width: 100%; height: 140px; border-radius: 8px; overflow: hidden; margin-bottom: 10px; border: 1px solid rgba(133,14,53,0.1); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .book-img-slot img { width: 100%; height: 100%; object-fit: cover; }
+        .book-footer-info { display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed rgba(133,14,53,0.15); padding-top: 10px; font-size: 0.75rem; font-weight: bold; color: #850e35; }
+        .flip-arrow-hint { animation: bounceRight 0.8s infinite alternate ease-in-out; }
         @keyframes bounceRight { to { transform: translate3d(4px, 0, 0); } }
 
-        /* Blur Overlay background */
         #letterBlurOverlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -675,40 +666,20 @@
         #letterBlurOverlay.active { opacity: 1; visibility: visible; }
 
         /* ==========================================================================
-           8. CINEMATIC SURPRISE INTERACTION SECTOR
+           8. SURPRISE CELEBRATION HUD
            ========================================================================== */
         .giant-trigger-btn {
-            width: 180px;
-            height: 180px;
+            width: 180px; height: 180px;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--neon-pink), #ff758c);
-            border: none;
-            color: white;
-            font-size: 3rem;
-            cursor: pointer;
-            position: relative;
-            z-index: 10;
+            border: none; color: white; font-size: 3rem; cursor: pointer;
+            position: relative; z-index: 10;
             box-shadow: 0 0 50px rgba(255, 42, 116, 0.6);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .giant-trigger-btn:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 80px var(--neon-pink);
-        }
-        .pulse-ring {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--neon-pink);
-            border-radius: 50%;
-            top: 0; left: 0;
-            animation: sonarRing 2s infinite linear;
-            pointer-events: none;
-        }
-        @keyframes sonarRing {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
+        .giant-trigger-btn:hover { transform: scale(1.15); box-shadow: 0 0 80px var(--neon-pink); }
+        .pulse-ring { position: absolute; width: 100%; height: 100%; border: 2px solid var(--neon-pink); border-radius: 50%; top: 0; left: 0; animation: sonarRing 2s infinite linear; pointer-events: none; }
+        @keyframes sonarRing { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
 
         #celebrationOverlay {
             position: fixed;
@@ -718,28 +689,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            visibility: hidden;
+            opacity: 0; visibility: hidden;
             transition: opacity 0.8s ease;
         }
         #celebrationOverlay.active { opacity: 1; visibility: visible; }
         .overlay-card { text-align: center; }
         .overlay-title { font-family: var(--font-luxury); font-size: 4rem; color: var(--gold); margin-bottom: 20px; text-shadow: 0 0 30px rgba(255,215,0,0.5); }
 
-        footer {
-            border-top: 1px solid var(--glass-border);
-            background: rgba(5, 2, 17, 0.8);
-            padding: 40px 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 5;
-        }
+        footer { border-top: 1px solid var(--glass-border); background: rgba(5, 2, 17, 0.8); padding: 40px 20px; text-align: center; backdrop-filter: blur(10px); position: relative; z-index: 5; }
         footer p { font-size: 0.85rem; opacity: 0.6; letter-spacing: 2px; }
         footer .footer-heart { color: var(--neon-pink); margin: 10px 0; animation: beat 1s infinite alternate; }
         @keyframes beat { to { transform: scale(1.2); } }
 
-        /* Mobile Optimization for Book Matrix */
         @media (max-width: 768px) {
             .hero-main-title { font-size: 2.8rem; }
             .hero-name { font-size: 4.5rem; }
@@ -753,6 +714,18 @@
     </style>
 </head>
 <body>
+
+    <!-- NEW: PASSWORD SECURTIY OVERLAY SYSTEM -->
+    <div id="passwordGate">
+        <div class="pass-card">
+            <i class="fas fa-lock"></i>
+            <h2>ACCESS RESTRICTED</h2>
+            <p>Enter the secret passcode to unlock the princess's portal ❤️</p>
+            <input type="password" id="passField" class="pass-input" placeholder="Enter Password Here...">
+            <div id="passError" class="pass-error-msg">তোমার বার্থডে ডেট টা লিখো 🥺</div>
+            <button class="premium-btn btn-primary" style="padding: 12px 35px; width: 100%;" onclick="validatePasscode()">Unlock Portal</button>
+        </div>
+    </div>
 
     <!-- Ambient Master Layer Components -->
     <div class="universe-bg">
@@ -773,8 +746,8 @@
         </div>
     </div>
 
-    <!-- Global Floating Background Music Handler (Premium Birthday Track) -->
-    <audio id="romanticTrack" src="https://assets.mixkit.co/active_storage/sfx/123/123.wav" loop></audio>
+    <!-- Global Floating Background Music Handler (Podigee Radio Stream/MP3) -->
+    <audio id="romanticTrack" src="https://audio.podigee-cdn.net/1359698-m-6e3fd07198a65eb639be512704a29a4a.mp3" loop></audio>
     <div class="audio-widget" onclick="controlAudio()">
         <div class="visualizer" id="visualizerBox">
             <div class="visualizer-bar"></div>
@@ -853,7 +826,6 @@
         <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
             <h3 class="section-title" style="margin-bottom: 40px;">A SECRET LETTER FOR THE QUEEN</h3>
             
-            <!-- Envelope Trigger Container -->
             <div class="envelope-container" onclick="openSecretLetterBook()">
                 <div class="envelope-flap"></div>
                 <div class="wax-seal">❤️</div>
@@ -862,15 +834,14 @@
         </div>
     </section>
 
-    <!-- Overlay Layer Components -->
     <div id="letterBlurOverlay" onclick="closeSecretLetterBook()"></div>
     
-    <!-- Optimized 3D Book System -->
+    <!-- 3D Book Layout Configuration with User Specified Local Paths -->
     <div class="book-viewport" id="secretLetterBook">
         <div class="real-3d-book">
             <div class="book-spine"></div>
             
-            <!-- LEFT FIXED PAGE: PAGE 1 -->
+            <!-- PAGE 1 -->
             <div class="book-page page-left-fixed">
                 <div class="book-title-lbl">To My Sweetheart, Mim ✨</div>
                 <div class="book-img-slot">
@@ -885,7 +856,7 @@
                 </div>
             </div>
 
-            <!-- INTERACTIVE FLIPPING CORE LEAF (Handles Page 2 & Page 3) -->
+            <!-- MIDWAY FLIPPING LEAF (PAGE 2 & 3) -->
             <div class="flipping-wrapper" id="movingLeaf" onclick="executePageFlip()">
                 <!-- Front Side: Page 2 -->
                 <div class="flip-face face-front">
@@ -917,7 +888,7 @@
                 </div>
             </div>
 
-            <!-- RIGHT FIXED PAGE: PAGE 4 -->
+            <!-- PAGE 4 -->
             <div class="book-page page-right-fixed" onclick="triggerFlowerRainSequence()">
                 <div class="book-title-lbl">Forever Yours 🌹</div>
                 <div class="book-img-slot">
@@ -935,7 +906,7 @@
         </div>
     </div>
 
-    <!-- WISH WALL SECTOR (Heart touching promises in Bengali) -->
+    <!-- WISH WALL -->
     <section class="section-wrapper">
         <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
             <h3 class="section-title" style="margin-bottom: 50px;">PROMISES ETCHED IN TIME</h3>
@@ -956,7 +927,7 @@
         </div>
     </section>
 
-    <!-- CINEMATIC SURPRISE INTERACTION SECTOR -->
+    <!-- CELEBRATION TRIGGER -->
     <section class="section-wrapper">
         <div style="text-align: center;">
             <h3 class="section-title" style="margin-bottom: 30px;">READY FOR THE GRAND FINALE?</h3>
@@ -968,7 +939,6 @@
         </div>
     </section>
 
-    <!-- Luxury Overlay HUD Container -->
     <div id="celebrationOverlay" onclick="closeCelebration()">
         <div class="overlay-card">
             <h2 class="overlay-title">HAPPY BIRTHDAY MIM!</h2>
@@ -977,15 +947,54 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-heart"><i class="fas fa-heart"></i></div>
         <p>MADE WITH ENDLESS LOVE & CODING PRECISION FOR MIM</p>
         <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.4;">FOREVER & ALWAYS © 2026</p>
     </footer>
 
-    <!-- JAVASCRIPT ANIMATION CORE ENGINE -->
+    <!-- JAVASCRIPT ANIMATION ENGINE & PASSCODE CONTROLLER -->
     <script>
+        /* ==========================================================================
+           🔒 PASSWORD VALIDATION SECURITY LAYER
+           ========================================================================== */
+        // মিমের জন্য পাসওয়ার্ড এখানে চেঞ্জ করতে পারো (বর্তমানে 'mim' দেওয়া আছে)
+        const correctPassword = "mim"; 
+
+        function validatePasscode() {
+            const userInput = document.getElementById('passField').value;
+            const errorElement = document.getElementById('passError');
+            const gateOverlay = document.getElementById('passwordGate');
+
+            if(userInput.toLowerCase() === correctPassword.toLowerCase()) {
+                // পাসওয়ার্ড সঠিক হলে পপ-আপ মসৃণভাবে ভ্যানিশ হয়ে যাবে
+                gateOverlay.style.opacity = '0';
+                gateOverlay.style.visibility = 'hidden';
+                
+                // পাসওয়ার্ড খোলার সাথে সাথে ব্যাকগ্রাউন্ড মিউজিক অটো-প্লে স্টার্ট হবে
+                setTimeout(() => {
+                    controlAudio();
+                }, 500);
+            } else {
+                // ভুল পাসওয়ার্ড দিলে টেক্সট পপ আপ আসবে 
+                errorElement.style.display = 'block';
+                // ইনপুট ফিল্ড হালকা কাঁপানোর জন্য এবং ফোকাস রিসেট করার জন্য 
+                document.getElementById('passField').value = '';
+                document.getElementById('passField').focus();
+            }
+        }
+
+        // Enter চাপ দিলেও যাতে পাসওয়ার্ড সাবমিট হয়
+        document.getElementById('passField').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validatePasscode();
+            }
+        });
+
+
+        /* ==========================================================================
+           UX/UI LUXURY CORE SCRIPTS
+           ========================================================================== */
         const cursor = document.getElementById('customCursor');
         const dot = document.getElementById('cursorDot');
         
@@ -997,7 +1006,7 @@
 
         window.addEventListener('click', (e) => { createExplosion(e.clientX, e.clientY); });
 
-        /* Flower Particles Fall Engine (White & Yellow Combo) */
+        /* Flower Particles Fall Engine */
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
         let elementsArray = [];
@@ -1079,22 +1088,20 @@
             }, 120);
         });
 
-        /* Audio Core Logic */
+        /* Audio Control */
         const track = document.getElementById('romanticTrack'); const vBox = document.getElementById('visualizerBox'); const aTxt = document.getElementById('audioStateTxt');
         function controlAudio() {
-            if (track.paused) { track.play().catch(err => console.log("Blocked")); vBox.classList.add('playing'); aTxt.innerText = "PLAYING BDAY TRACK 💖"; }
+            if (track.paused) { track.play().catch(err => console.log("Audio play blocked by browser policies")); vBox.classList.add('playing'); aTxt.innerText = "PLAYING BDAY TRACK 💖"; }
             else { track.pause(); vBox.classList.remove('playing'); aTxt.innerText = "MUSIC PAUSED 🎵"; }
         }
 
-        /* Layout Scroll Spy */
+        /* Scroll Animation Spy */
         const observedCards = document.querySelectorAll('.scroll-reveal');
         const layoutObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.15 });
         observedCards.forEach(c => layoutObserver.observe(c));
         function scrollToSector(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
 
-        /* ==========================================================================
-           ⭐ CHRONO LIVE ENGINE - COUNT UP FROM 2019
-           ========================================================================== */
+        /* CHRONO LIVE ENGINE (From 2019) */
         const anniversaryTimeline = new Date("2019-01-01T00:00:00");
         function refreshChronoCounter() {
             const difference = new Date() - anniversaryTimeline;
@@ -1115,9 +1122,7 @@
             const statusNode = node.querySelector('.coupon-status'); statusNode.innerHTML = "<i class='fas fa-check-circle'></i> RESERVED FOR MIM"; statusNode.style.color = "var(--gold)"; node.style.borderColor = "var(--gold)"; node.style.pointerEvents = "none";
         }
 
-        /* ==========================================================================
-           ⭐ REALISTIC & ULTRA-SMOOTH 3D FLIP ENGINE
-           ========================================================================== */
+        /* 3D BOOK ENGINE */
         const movingLeaf = document.getElementById('movingLeaf');
         const bookView = document.getElementById('secretLetterBook');
 
@@ -1125,7 +1130,6 @@
             document.getElementById('letterBlurOverlay').classList.add('active');
             bookView.classList.add('opened');
             movingLeaf.classList.remove('flipped');
-            if (track.paused) controlAudio(); 
         }
 
         function closeSecretLetterBook() {
@@ -1135,19 +1139,15 @@
             populateSpace();
         }
 
-        function executePageFlip() {
-            movingLeaf.classList.toggle('flipped');
-        }
+        function executePageFlip() { movingLeaf.classList.toggle('flipped'); }
 
         function triggerFlowerRainSequence() {
             forceGopalRain = true;
             for(let i=0; i<80; i++) { elementsArray.push(new ParticleEntity()); }
-            setTimeout(() => {
-                closeSecretLetterBook();
-            }, 5000);
+            setTimeout(() => { closeSecretLetterBook(); }, 5000);
         }
 
-        function igniteCelebration() { document.getElementById('celebrationOverlay').classList.add('active'); if (track.paused) controlAudio(); }
+        function igniteCelebration() { document.getElementById('celebrationOverlay').classList.add('active'); }
         function closeCelebration() { document.getElementById('celebrationOverlay').classList.remove('active'); }
     </script>
 </body>
