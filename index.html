@@ -955,10 +955,7 @@
 
     <!-- JAVASCRIPT ANIMATION ENGINE & PASSCODE CONTROLLER -->
     <script>
-        /* ==========================================================================
-           🔒 PASSWORD VALIDATION SECURITY LAYER
-           ========================================================================== */
-        // মিমের জন্য পাসওয়ার্ড এখানে চেঞ্জ করতে পারো (বর্তমানে 'mim' দেওয়া আছে)
+       
         const correctPassword = "MiM19"; 
 
         function validatePasscode() {
@@ -967,18 +964,18 @@
             const gateOverlay = document.getElementById('passwordGate');
 
             if(userInput.toLowerCase() === correctPassword.toLowerCase()) {
-                // পাসওয়ার্ড সঠিক হলে পপ-আপ মসৃণভাবে ভ্যানিশ হয়ে যাবে
+              
                 gateOverlay.style.opacity = '0';
                 gateOverlay.style.visibility = 'hidden';
                 
-                // পাসওয়ার্ড খোলার সাথে সাথে ব্যাকগ্রাউন্ড মিউজিক অটো-প্লে স্টার্ট হবে
+              
                 setTimeout(() => {
                     controlAudio();
                 }, 500);
             } else {
-                // ভুল পাসওয়ার্ড দিলে টেক্সট পপ আপ আসবে 
+                
                 errorElement.style.display = 'block';
-                // ইনপুট ফিল্ড হালকা কাঁপানোর জন্য এবং ফোকাস রিসেট করার জন্য 
+                
                 document.getElementById('passField').value = '';
                 document.getElementById('passField').focus();
             }
